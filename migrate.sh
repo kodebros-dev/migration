@@ -29,8 +29,9 @@ print_error() {
     echo -e "${RED}[ERROR]${NC} $1"
 }
 
-# Repository mapping: GitLab URL -> GitHub URL
+# Repository mapping: GitLab URL -> GitHub URL (both with and without .git extension)
 declare -A REPO_MAPPING=(
+    # With .git extension
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/backend_core.git"]="https://github.com/kodebros-dev/backend_core.git"
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/cloud/cloud-backend-poc.git"]="https://github.com/kodebros-dev/cloud-backend.git"
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-fastapi-poc.git"]="https://github.com/kodebros-dev/qube-backend.git"
@@ -42,6 +43,18 @@ declare -A REPO_MAPPING=(
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-scripts.git"]="https://github.com/kodebros-dev/qube-scripts.git"
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-deployments.git"]="https://github.com/kodebros-dev/qube-deployments.git"
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/camera-manager.git"]="https://github.com/kodebros-dev/qube-camera-manager.git"
+    # Without .git extension
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/backend_core"]="https://github.com/kodebros-dev/backend_core.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/cloud/cloud-backend-poc"]="https://github.com/kodebros-dev/cloud-backend.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-fastapi-poc"]="https://github.com/kodebros-dev/qube-backend.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/cloud/stream-listener"]="https://github.com/kodebros-dev/cloud-stream-manager.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/frontend_core"]="https://github.com/kodebros-dev/frontend_core.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-ui"]="https://github.com/kodebros-dev/qube-ui.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/cloud/cloud-ui-poc"]="https://github.com/kodebros-dev/cloud-ui.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-healthcheck"]="https://github.com/kodebros-dev/qube-healthcheck.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-scripts"]="https://github.com/kodebros-dev/qube-scripts.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-deployments"]="https://github.com/kodebros-dev/qube-deployments.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/camera-manager"]="https://github.com/kodebros-dev/qube-camera-manager.git"
 )
 
 # Function to update remote origin for a repository
@@ -216,6 +229,11 @@ The script will:
 1. Update the remote origin URL
 2. Process any submodules found
 3. Update .gitmodules file if necessary
+
+Examples:
+  $0                          # Process current directory
+  $0 ./repo1 ./repo2         # Process specific directories
+  $0 /path/to/repos/*        # Process all subdirectories
 
 EOF
 }
