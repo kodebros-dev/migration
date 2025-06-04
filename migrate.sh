@@ -31,7 +31,7 @@ print_error() {
 
 # Repository mapping: GitLab URL -> GitHub URL (both with and without .git extension)
 declare -A REPO_MAPPING=(
-    # With .git extension
+    # With .git extension - Original repositories
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/backend_core.git"]="https://github.com/kodebros-dev/backend_core.git"
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/cloud/cloud-backend-poc.git"]="https://github.com/kodebros-dev/cloud-backend.git"
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-fastapi-poc.git"]="https://github.com/kodebros-dev/qube-backend.git"
@@ -43,7 +43,21 @@ declare -A REPO_MAPPING=(
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-scripts.git"]="https://github.com/kodebros-dev/qube-scripts.git"
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-deployments.git"]="https://github.com/kodebros-dev/qube-deployments.git"
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/camera-manager.git"]="https://github.com/kodebros-dev/qube-camera-manager.git"
-    # Without .git extension
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/ai-performance-test.git"]="https://github.com/kodebros-dev/ai-performance-test.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/balena-deployment-test.git"]="https://github.com/kodebros-dev/balena-deployment-test.git"
+    ["https://gitlab.kodebros.com/promiseq/docs/developer.git"]="https://github.com/kodebros-dev/developer-docs.git"
+    ["https://gitlab.kodebros.com/promiseq/integrations/ftp-production.git"]="https://github.com/kodebros-dev/ftp-production.git"
+    ["https://gitlab.kodebros.com/promiseq/automation/gitlab.git"]="https://github.com/kodebros-dev/gitlab-automation.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/cloud/heartbeat-system.git"]="https://github.com/kodebros-dev/cloud-heartbeat-service.git"
+    ["https://gitlab.kodebros.com/promiseq/docs/product.git"]="https://github.com/kodebros-dev/product-docs.git"
+    ["https://gitlab.kodebros.com/promiseq/ai/promiseq-ai.git"]="https://github.com/kodebros-dev/promiseq-ai.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-io-control.git"]="https://github.com/kodebros-dev/qube-io-control.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-pipeline-manager.git"]="https://github.com/kodebros-dev/qube-pipeline-manager.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-publisher.git"]="https://github.com/kodebros-dev/qube-publisher.git"
+    ["https://gitlab.kodebros.com/promiseq/integrations/smtp-server.git"]="https://github.com/kodebros-dev/smtp-server.git"
+    ["https://gitlab.kodebros.com/promiseq/infrastructure/terraform.git"]="https://github.com/kodebros-dev/terraform-infrastructure.git"
+    
+    # Without .git extension - Original repositories
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/backend_core"]="https://github.com/kodebros-dev/backend_core.git"
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/cloud/cloud-backend-poc"]="https://github.com/kodebros-dev/cloud-backend.git"
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-fastapi-poc"]="https://github.com/kodebros-dev/qube-backend.git"
@@ -55,6 +69,19 @@ declare -A REPO_MAPPING=(
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-scripts"]="https://github.com/kodebros-dev/qube-scripts.git"
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-deployments"]="https://github.com/kodebros-dev/qube-deployments.git"
     ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/camera-manager"]="https://github.com/kodebros-dev/qube-camera-manager.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/ai-performance-test"]="https://github.com/kodebros-dev/ai-performance-test.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/balena-deployment-test"]="https://github.com/kodebros-dev/balena-deployment-test.git"
+    ["https://gitlab.kodebros.com/promiseq/docs/developer"]="https://github.com/kodebros-dev/developer-docs.git"
+    ["https://gitlab.kodebros.com/promiseq/integrations/ftp-production"]="https://github.com/kodebros-dev/ftp-production.git"
+    ["https://gitlab.kodebros.com/promiseq/automation/gitlab"]="https://github.com/kodebros-dev/gitlab-automation.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/cloud/heartbeat-system"]="https://github.com/kodebros-dev/cloud-heartbeat-service.git"
+    ["https://gitlab.kodebros.com/promiseq/docs/product"]="https://github.com/kodebros-dev/product-docs.git"
+    ["https://gitlab.kodebros.com/promiseq/ai/promiseq-ai"]="https://github.com/kodebros-dev/promiseq-ai.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-io-control"]="https://github.com/kodebros-dev/qube-io-control.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-pipeline-manager"]="https://github.com/kodebros-dev/qube-pipeline-manager.git"
+    ["https://gitlab.kodebros.com/promiseq/ai-ninjas/qube-core/qube-publisher"]="https://github.com/kodebros-dev/qube-publisher.git"
+    ["https://gitlab.kodebros.com/promiseq/integrations/smtp-server"]="https://github.com/kodebros-dev/smtp-server.git"
+    ["https://gitlab.kodebros.com/promiseq/infrastructure/terraform"]="https://github.com/kodebros-dev/terraform-infrastructure.git"
 )
 
 # Function to update remote origin for a repository
